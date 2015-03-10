@@ -52,10 +52,13 @@ public class MainActivity extends ActionBarActivity {
         if (id == R.id.action_settings) {
             return true;
         }else if(id==R.id.action_add_item){
-            //do toast
+            Toaster t = new Toaster(getApplicationContext());
+            t.make(R.string.add_item);
             return true;
         }else if(id==R.id.action_settings){
             //do toast
+            Toaster t = new Toaster(getApplicationContext());
+            t.make(R.string.settings_pressed);
             return true;
         }
 
