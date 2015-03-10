@@ -1,0 +1,39 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/f_login2"
+    android:padding="16dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginBottom="16dp"
+            android:inputType="text|textEmailAddress"
+            android:imeOptions="actionNext"
+            android:hint="E-mail"
+            android:id="@+id/email" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/email"
+            android:layout_toLeftOf="@+id/go"
+            android:layout_alignParentLeft="true"
+            android:paddingRight="16dp"
+            android:inputType="text|textPassword"
+            android:imeOptions="actionGo"
+            android:hint="Password"
+            android:id="@+id/password" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/email"
+            android:layout_alignParentRight="true"
+            android:layout_alignBaseline="@id/password"
+            android:text="Go"
+            android:id="@+id/go" />
+
+</RelativeLayout>

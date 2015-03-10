@@ -1,0 +1,26 @@
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:stools="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    tools:ignore="MergeRootFrame">
+
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        >
+        <fragment
+            android:id="@+id/fragment_login"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="com.just4me.apple.testing.LoginFragment"
+            tools:layout="@layout/fragment_login2" />
+
+    </LinearLayout>
+</RelativeLayout>
+
+
