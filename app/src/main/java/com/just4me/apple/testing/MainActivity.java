@@ -51,6 +51,12 @@ public class MainActivity extends ActionBarActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
+        }else if(id==R.id.action_add_item){
+            //do toast
+            return true;
+        }else if(id==R.id.action_settings){
+            //do toast
+            return true;
         }
 
         return super.onOptionsItemSelected(item);

@@ -4,10 +4,12 @@
     <item android:id="@+id/action_settings" android:title="@string/action_settings"
         android:orderInCategory="100" app:showAsAction="never" />
     <item
-        android:visible="true"
-        android:title="Menu item"
+        android:id="@+id/action_add_item"
+        android:title="@string/action_add_item"
+        android:icon="@drawable/ic_menu_add"
+        android:orderInCategory="100"
+        android:showAsAction="always|withText"
+        app:showAsAction="always|withText" />
 
-        >
 
-    </item>
 </menu>
