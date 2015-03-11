@@ -35,5 +35,12 @@
             android:layout_alignBaseline="@id/password"
             android:text="Go"
             android:id="@+id/go" />
+		<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/password"
+			android:text=""
+			android:id="@+id/login_error"
+			/>
 
 </RelativeLayout>

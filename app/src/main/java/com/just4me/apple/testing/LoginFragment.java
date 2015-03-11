@@ -14,6 +14,7 @@ import com.podio.sdk.Request;
 import com.podio.sdk.Session;
 import com.podio.sdk.Request.ResultListener;
 import com.podio.sdk.Podio;
+import android.widget.*;
 
 
 /**
@@ -34,6 +35,7 @@ public class LoginFragment extends Fragment {
     private EditText email;
     private EditText password;
     private Button go;
+	private TextView error;
 
     private LoginListener loginListener;
 
@@ -46,6 +48,7 @@ public class LoginFragment extends Fragment {
         email = (EditText) contentView.findViewById(R.id.email);
         password = (EditText) contentView.findViewById(R.id.password);
         go = (Button) contentView.findViewById(R.id.go);
+		error = (TextView) contentView.findViewById(R.id.login_error);
         go.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -74,6 +77,7 @@ public class LoginFragment extends Fragment {
             @Override
             public boolean onSessionChanged(String authToken, String refreshToken, long expires) {
 				Log.d(TAG, "onSessionChanged");
+				error.setText("Good login");
                 return false;
             }
         })
@@ -83,6 +87,9 @@ public class LoginFragment extends Fragment {
              public boolean onErrorOccured(Throwable cause) {
                         // Oh no! I couldn't log in...
 			Log.d(TAG, "onError");
+			error.setText("login falled. try again.");
+			password.setText("");
+			
              return false;
              }
 

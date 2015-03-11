@@ -8,10 +8,29 @@ import com.podio.sdk.*;
  * Created by apple on 3/8/2015.
  */
 public class MyPodioApp extends Application {
-    private static final String TAG="MPodioApp";
+    private static final String TAG="MyPodioApp";
     private static final String CLIENT_ID = "mypodio-vgupqn";
     private static final String CLIENT_SECRET = "f9m3ZpLGRIdKcil1Rficmvbe1JvoCZLPNy0Jpd3iEIbVpGWyXmu1vE1tuQgFGhwJ";
 
+    private static Session session;
+
+    public static boolean hasSession() {
+        if (MyPodioApp.session != null 
+	//	&& MyPodioApp.session.isAuthorized()
+		) {
+		
+		
+            return true;
+        } else {
+            saveSession(null);
+            return false;
+        }
+    }
+
+    public static void saveSession(Session session) {
+        MyPodioApp.session = session;
+    }
+	
     @Override
     public void onCreate() {
         super.onCreate();
