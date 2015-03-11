@@ -69,23 +69,24 @@ public class LoginFragment extends Fragment {
 
         // Yup, this is the only Podio SDK call we need to do.
         Podio.client
-                .authenticateWithUserCredentials(usr, pwd).withSessionListener(new Request.SessionListener() {
+        	.authenticateWithUserCredentials(usr, pwd)
+			.withSessionListener(new Request.SessionListener() {
             @Override
             public boolean onSessionChanged(String authToken, String refreshToken, long expires) {
+				Log.d(TAG, "onSessionChanged");
                 return false;
             }
         })
+			.withErrorListener(new Request.ErrorListener() {
 
-
-                .withErrorListener(new Request.ErrorListener() {
-
-                    @Override
-                    public boolean onErrorOccured(Throwable cause) {
+             @Override
+             public boolean onErrorOccured(Throwable cause) {
                         // Oh no! I couldn't log in...
-                        return false;
-                    }
+			Log.d(TAG, "onError");
+             return false;
+             }
 
-                });
+         });
 
     }
 
