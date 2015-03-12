@@ -1,7 +1,7 @@
 package com.just4me.apple.testing;
 
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,7 +32,12 @@ public class LoginFragment extends Fragment {
     public static interface LoginListener {
         public void onLoginPerformed(Session session);
     }
+    public static LoginFragment newInstance(LoginListener loginListener) {
+        LoginFragment fragment = new LoginFragment();
+        fragment.loginListener = loginListener;
 
+        return fragment;
+    }
     private EditText email;
     private EditText password;
     private Button go;
