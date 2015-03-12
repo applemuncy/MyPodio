@@ -1,6 +1,5 @@
 package com.just4me.apple.testing;
 
-
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
@@ -15,6 +14,8 @@ import com.podio.sdk.Session;
 import com.podio.sdk.Request.ResultListener;
 import com.podio.sdk.Podio;
 import android.widget.*;
+
+import java.util.Date;
 
 
 /**
@@ -75,9 +76,15 @@ public class LoginFragment extends Fragment {
         	.authenticateWithUserCredentials(usr, pwd)
 			.withSessionListener(new Request.SessionListener() {
             @Override
-            public boolean onSessionChanged(String authToken, String refreshToken, long expires) {
+            public boolean onSessionChanged(String authTokenT, String refreshTokenT, long expiresT) {
 				Log.d(TAG, "onSessionChanged");
-				error.setText("Good login");
+                Date d = new Date(expiresT);
+				error.setText("Good login " + d.toString());
+                MyPodioApp app = (MyPodioApp) getActivity().getApplication();
+                app.setAuthToken(authTokenT);
+                app.setRefreshToken(refreshTokenT);
+                app.setExpires(expiresT);
+
                 return false;
             }
         })
