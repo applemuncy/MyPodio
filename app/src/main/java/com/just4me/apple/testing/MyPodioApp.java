@@ -5,6 +5,7 @@ import android.app.Application;
 
 import com.podio.sdk.Session;
 import com.podio.sdk.Podio;
+import android.content.*;
 
 
 
@@ -20,12 +21,55 @@ public class MyPodioApp extends Application {
     private String authToken;
     private String refreshToken;
     private long expires;
-
-    public void setAuthToken(String token){authToken=token;}
-    public void setRefreshToken(String token){refreshToken=token;}
-    public void setExpires(long t){expires=t;}
-
-
+	private String email;
+	private final String SECRETS = "secrets";
+	private SharedPreferences prefs; 
+	
+    public void setAuthToken(String token){
+		prefs.edit().putString("authToken", token).apply();
+		authToken=token;}
+		public String getAuthToken(){
+			authToken=prefs.getString("authToken", null);
+			return authToken;
+		}
+		
+    public void setRefreshToken(String token){
+		prefs.edit().putString("refreshToken", token).apply();
+		refreshToken=token;}
+		public String getRefreshToken(){
+			refreshToken=prefs.getString("refreshToken",null);
+			return refreshToken;
+		}
+		
+    public void setExpires(long t){
+	prefs.edit().putLong("expires", t).apply();
+	expires=t;
+	}
+	public long getExpires(){
+		expires = prefs.getLong("expires",0);
+		return expires;
+	}
+	
+	public void setEmail(String e){
+		prefs.edit().putString("email",e).apply();
+		email = e;
+		Toaster t = new Toaster(this);
+		t.make("set "+e);
+		
+	}
+	public String getEmail(){
+		
+		email= prefs.getString("email",null);
+		if (email!=null){
+			
+			Toaster t = new Toaster(this);
+			t.make("retreved " + email);
+			
+		}
+		return email;
+		
+	}
+	
     public static boolean hasSession() {
         if (MyPodioApp.session != null
             //	&& MyPodioApp.session.isAuthorized()
@@ -44,6 +88,8 @@ public class MyPodioApp extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+		prefs = this.getSharedPreferences(
+			SECRETS, Context.MODE_PRIVATE);
         Log.d(TAG, "onCreate start");
         // Setup the Podio SDK runtime environment. Failing to call
         // this method will cause any and all subsequent calls to

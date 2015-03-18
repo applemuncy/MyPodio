@@ -21,7 +21,16 @@ public class Toaster {
         this.context= context;
     }
 
-    public void make(int resource){
+    public void make(String resource){
+        Log.d(TAG, "make()");
+        Toast toast= Toast.makeText(context, resource, TOAST_DURATION);
+        toast.show();
+
+    }
+	
+	public void make(int resource)
+		
+	{
         Log.d(TAG, "make()");
         Toast toast= Toast.makeText(context, resource, TOAST_DURATION);
         toast.show();
